@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Sample SAM Template for DebuggingExample
+Globals:
+  Function:
+    Timeout: 10
+    Tracing: Active
+Resources:
+  DebuggingExampleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: DebuggingExample
+      CodeUri: s3://olme-deploy/fa74a06afd0084b5dce5bc79e2724370
+      Handler: DebuggingExample::DebuggingExample.Functions::Get
+      Runtime: dotnetcore2.1
+      Environment:
+        Variables:
+          PARAM1: VALUE
+      Events:
+        DebuggingExample:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
+Outputs:
+  DebuggingExampleApi:
+    Description: API Gateway endpoint URL for Prod stage for Debugging Example function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/DebuggingExample/
+  DebuggingExampleFunction:
+    Description: Debugging Example Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - DebuggingExampleFunction
+      - Arn
+  DebuggingExampleFunctionIamRole:
+    Description: Implicit IAM Role created for Debugging Example function
+    Value:
+      Fn::GetAtt:
+      - DebuggingExampleFunctionRole
+      - Arn
