@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "ImageServer";
+
+package ImageProcessor;
+
+service ImageSvc {
+  rpc Download (stream ImageRequest) returns (stream ImageResponse);
+}
+
+message ImageRequest {
+  string url = 1;
+}
+
+message ImageResponse {
+  string url = 1; 
+  bytes content = 2;
+}
