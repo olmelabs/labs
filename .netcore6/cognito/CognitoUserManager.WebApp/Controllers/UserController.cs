@@ -82,8 +82,6 @@ namespace CognitoUserManager.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginAsync(UserLoginModel model)
         {
-            model.EmailAddress = "medyanik@yahoo.com";
-            model.Password = "2password^$";
             if (!ModelState.IsValid)
             {
                 return View();
