@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>8b4f90d1-ef86-4107-a55b-7c1401933b9f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CognitoUserManager.Core\CognitoUserManager.Core.csproj" />
+  </ItemGroup>
+
+</Project>
